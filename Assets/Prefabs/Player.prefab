@@ -317,7 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 3
   _jumpForce: 400
-  _groundCheck: {fileID: 3081442729532644292}
+  _groundCheckCollider: {fileID: 5364166018336420798}
   _ground:
     serializedVersion: 2
     m_Bits: 64

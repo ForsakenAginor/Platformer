@@ -8,7 +8,7 @@ public class AnotherMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
-    [SerializeField] private Transform _groundCheck;
+    [SerializeField] private CircleCollider2D _groundCheckCollider;
     [SerializeField] private LayerMask _ground;
 
     private Animator _animator;
@@ -16,7 +16,6 @@ public class AnotherMovement : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Vector3 _xMovement;
     private bool _isOnGround;
-    private CircleCollider2D _groundCheckCollider;
 
     private void Awake()
     {
@@ -24,7 +23,6 @@ public class AnotherMovement : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _xMovement = new Vector3(1 * _speed, 0, 0);
-        _groundCheck.TryGetComponent<CircleCollider2D>(out _groundCheckCollider);
     }
 
     private void Update()
@@ -63,7 +61,7 @@ public class AnotherMovement : MonoBehaviour
     {
         if (_groundCheckCollider != null)
         {
-            _isOnGround = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckCollider.radius, _ground);
+            _isOnGround = Physics2D.OverlapCircle(_groundCheckCollider.transform.position, _groundCheckCollider.radius, _ground);
             _animator.SetBool("IsOnGround", _isOnGround);
         }
     }
