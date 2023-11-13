@@ -104,10 +104,10 @@ GameObject:
   - component: {fileID: 5124906515096606543}
   - component: {fileID: 8808503185168676309}
   - component: {fileID: 1666142469626861745}
-  - component: {fileID: 1749228369921525551}
   - component: {fileID: 999930521908531896}
   - component: {fileID: 9195176877136862319}
   - component: {fileID: -4832553701185355678}
+  - component: {fileID: 7828842478797747845}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -128,6 +128,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6427549395451225273}
+  - {fileID: 3081442729532644292}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -255,20 +256,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1749228369921525551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3466016391711102338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eba3aca97e37a9446820cd7ab2c8acf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 1
-  _jumpForce: 350
 --- !u!95 &999930521908531896
 Animator:
   serializedVersion: 5
@@ -302,6 +289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c1efa6f9196cf4987aabaed579fb2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _xPosition: -7
+  _yPosition: -3
 --- !u!114 &-4832553701185355678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,3 +303,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f24cdfe9f295f3648ab7a01649acd34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7828842478797747845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3466016391711102338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eba3aca97e37a9446820cd7ab2c8acf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 3
+  _jumpForce: 400
+  _groundCheck: {fileID: 3081442729532644292}
+  _ground:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!1 &8589634170527563765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3081442729532644292}
+  - component: {fileID: 5364166018336420798}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3081442729532644292
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8589634170527563765}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 706191658772908126}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &5364166018336420798
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8589634170527563765}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.3

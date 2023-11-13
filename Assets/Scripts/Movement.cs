@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -7,11 +8,15 @@ public class AnotherMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private Transform _groundCheck;
+    [SerializeField] private LayerMask _ground;
 
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody;
     private Vector3 _xMovement;
+    private bool _isOnGround;
+    private CircleCollider2D _groundCheckCollider;
 
     private void Awake()
     {
@@ -19,14 +24,16 @@ public class AnotherMovement : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _xMovement = new Vector3(1 * _speed, 0, 0);
+        _groundCheck.TryGetComponent<CircleCollider2D>(out _groundCheckCollider);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && _animator.GetCurrentAnimatorStateInfo(0).IsName("Jump") == false)
+        CheckingGround();
+
+        if (Input.GetKeyDown(KeyCode.W) && _isOnGround == true)
         {
             _rigidbody.AddForce(Vector2.up * _jumpForce);
-            _animator.Play("Jump");
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -49,6 +56,15 @@ public class AnotherMovement : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.A))
         {
             _animator.SetBool("IsRunning", false);
+        }
+    }
+
+    private void CheckingGround()
+    {
+        if (_groundCheckCollider != null)
+        {
+            _isOnGround = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckCollider.radius, _ground);
+            _animator.SetBool("IsOnGround", _isOnGround);
         }
     }
 }
