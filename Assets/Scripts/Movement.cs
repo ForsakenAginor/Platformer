@@ -50,7 +50,6 @@ public class AnotherMovement : MonoBehaviour
         {
             _animator.SetBool("IsRunning", false);
         }
-
     }
 }
 
