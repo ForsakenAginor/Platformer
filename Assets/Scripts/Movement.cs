@@ -27,6 +27,8 @@ public class AnotherMovement : MonoBehaviour
 
     private void Update()
     {
+        const string isRunningBoolAnimatorValue = "IsRunning";
+
         CheckingGround();
 
         if (Input.GetKeyDown(KeyCode.W) && _isOnGround == true)
@@ -37,32 +39,34 @@ public class AnotherMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             transform.Translate(_xMovement * Time.deltaTime);
-            _animator.SetBool("IsRunning", true);
+            _animator.SetBool(isRunningBoolAnimatorValue, true);
             _spriteRenderer.flipX = false;
         }
         else if (Input.GetKeyUp(KeyCode.D))
         {
-            _animator.SetBool("IsRunning", false);
+            _animator.SetBool(isRunningBoolAnimatorValue, false);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
             transform.Translate(_xMovement * Time.deltaTime * (-1));
-            _animator.SetBool("IsRunning", true);
+            _animator.SetBool(isRunningBoolAnimatorValue, true);
             _spriteRenderer.flipX = true;
         }
         else if (Input.GetKeyUp(KeyCode.A))
         {
-            _animator.SetBool("IsRunning", false);
+            _animator.SetBool(isRunningBoolAnimatorValue, false);
         }
     }
 
     private void CheckingGround()
     {
+        const string isOnGroundBoolAnimatorValue = "IsOnGround";
+
         if (_groundCheckCollider != null)
         {
             _isOnGround = Physics2D.OverlapCircle(_groundCheckCollider.transform.position, _groundCheckCollider.radius, _ground);
-            _animator.SetBool("IsOnGround", _isOnGround);
+            _animator.SetBool(isOnGroundBoolAnimatorValue, _isOnGround);
         }
     }
 }

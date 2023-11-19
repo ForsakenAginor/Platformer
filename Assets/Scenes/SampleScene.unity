@@ -255,7 +255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 80201036}
   - component: {fileID: 80201035}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1972,7 +1972,7 @@ GameObject:
   - component: {fileID: 1593773938}
   - component: {fileID: 1593773937}
   - component: {fileID: 1593773936}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36452,14 +36452,6 @@ PrefabInstance:
     - target: {fileID: 706191658772908126, guid: ae9753abcd735f645abdd99d1f880392, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1749228369921525551, guid: ae9753abcd735f645abdd99d1f880392, type: 3}
-      propertyPath: _speed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1749228369921525551, guid: ae9753abcd735f645abdd99d1f880392, type: 3}
-      propertyPath: _jumpForce
-      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 3466016391711102338, guid: ae9753abcd735f645abdd99d1f880392, type: 3}
       propertyPath: m_Name
