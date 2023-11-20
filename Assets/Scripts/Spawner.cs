@@ -6,7 +6,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private Transform _pointsList;
-    [SerializeField] private GameObject _creature;
+    [SerializeField] private Medpack _medpack;
 
     private readonly float _spawnFrequency = 60;
     private Transform[] _points;
@@ -37,7 +37,7 @@ public class Spawner : MonoBehaviour
             emptySpots = FindEmptyPoints();
             
             if(emptySpots.Length > 0)
-                Instantiate(_creature, emptySpots[Random.Range(0, emptySpots.Length)], Quaternion.identity);
+                Instantiate(_medpack, emptySpots[Random.Range(0, emptySpots.Length)], Quaternion.identity);
 
             yield return spawnDelay;
         }
@@ -45,7 +45,7 @@ public class Spawner : MonoBehaviour
 
     private Vector3[] FindEmptyPoints()
     {
-        string tag = _creature.tag;
+        string tag = _medpack.tag;
         Vector3[] emptySpots = _points.Select(point => point.position).
             Except(GameObject.FindGameObjectsWithTag(tag).Select(creature => creature.transform.position)).
             ToArray();

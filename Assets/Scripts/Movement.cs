@@ -6,6 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class AnotherMovement : MonoBehaviour
 {
+    private const string IsRunningAnimatorsBoolName = "IsRunning";
+    private const string IsOnGroundAnimatorsBoolName = "IsOnGround";
+
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private CircleCollider2D _groundCheckCollider;
@@ -27,8 +30,6 @@ public class AnotherMovement : MonoBehaviour
 
     private void Update()
     {
-        const string isRunningBoolAnimatorValue = "IsRunning";
-
         CheckingGround();
 
         if (Input.GetKeyDown(KeyCode.W) && _isOnGround == true)
@@ -39,34 +40,32 @@ public class AnotherMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             transform.Translate(_xMovement * Time.deltaTime);
-            _animator.SetBool(isRunningBoolAnimatorValue, true);
+            _animator.SetBool(IsRunningAnimatorsBoolName, true);
             _spriteRenderer.flipX = false;
         }
         else if (Input.GetKeyUp(KeyCode.D))
         {
-            _animator.SetBool(isRunningBoolAnimatorValue, false);
+            _animator.SetBool(IsRunningAnimatorsBoolName, false);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
             transform.Translate(_xMovement * Time.deltaTime * (-1));
-            _animator.SetBool(isRunningBoolAnimatorValue, true);
+            _animator.SetBool(IsRunningAnimatorsBoolName, true);
             _spriteRenderer.flipX = true;
         }
         else if (Input.GetKeyUp(KeyCode.A))
         {
-            _animator.SetBool(isRunningBoolAnimatorValue, false);
+            _animator.SetBool(IsRunningAnimatorsBoolName, false);
         }
     }
 
     private void CheckingGround()
     {
-        const string isOnGroundBoolAnimatorValue = "IsOnGround";
-
         if (_groundCheckCollider != null)
         {
             _isOnGround = Physics2D.OverlapCircle(_groundCheckCollider.transform.position, _groundCheckCollider.radius, _ground);
-            _animator.SetBool(isOnGroundBoolAnimatorValue, _isOnGround);
+            _animator.SetBool(IsOnGroundAnimatorsBoolName, _isOnGround);
         }
     }
 }

@@ -24,7 +24,9 @@ public class EnemyPatroller : MonoBehaviour
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _points[_currentTargetIndex].position, _speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position,
+                                                _points[_currentTargetIndex].position,
+                                                _speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
